@@ -1,0 +1,351 @@
+  "rules": [
+            {
+          ]
+      "description": "Custom layer mappings (when layer_mode is active)",
+            {
+              "name": "layer_mode",
+        {
+              "modifiers": ["left_command", "left_shift"]
+  "rules": [
+  UW PICO 5.09                                             New Buffer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                 [ Read 273 lines ]
+^G Get Help        ^O WriteOut        ^R Read File       ^Y Prev Pg         ^K Cut Text        ^C Cur Pos
+^X Exit            ^J Justify         ^W Where is        ^V Next Pg         ^U UnCut Text      ^T To Spell
+  UW PICO 5.09                                       File: custom_layer.json
+
+{
+  "title": "Custom Layer with Command Toggle and Caps Lock Remap",
+  "rules": [
+    {
+      "description": "Remap Caps Lock to Command",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "key_code": "left_command"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Map backslash/pipe key to delete on default layer",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "backslash"
+          },
+          "to": [
+            {
+
+^G Get Help        ^O WriteOut        ^R Read File       ^Y Prev Pg         ^K Cut Text        ^C Cur Pos
+^X Exit            ^J Justify         ^W Where is        ^V Next Pg         ^U UnCut Text      ^T To Spel:q
+q
+≈≈≈{
+  "title": "Custom Layer with Command Toggle and Caps Lock Remap",
+  "rules": [
+    {
+      "description": "Remap Caps Lock to Command",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "key_code": "left_command"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Map backslash/pipe key to delete on default layer",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "backslash"
+          },
+          "to": [
+            {
+              "key_code": "delete_forward"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_unless",
+              "name": "layer_mode",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Physical Command key as layer toggle",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_command"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "layer_mode",
+                "value": 1
+              }
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "layer_mode",
+                "value": 0
+              }
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "left_command"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_command"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "layer_mode",
+                "value": 1
+              }
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "layer_mode",
+                "value": 0
+              }
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "right_command"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Custom layer mappings (when layer_mode is active)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h"
+          },
+          "to": [
+            {
+              "key_code": "left_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "layer_mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j"
+          },
+          "to": [
+            {
+              "key_code": "down_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "layer_mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k"
+          },
+          "to": [
+            {
+              "key_code": "up_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "layer_mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l"
+          },
+          "to": [
+            {
+              "key_code": "right_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "layer_mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "e"
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "layer_mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "u"
+          },
+          "to": [
+            {
+              "key_code": "j",
+              "modifiers": ["left_command", "left_shift"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "layer_mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "i"
+          },
+          "to": [
+            {
+              "key_code": "k",
+              "modifiers": ["left_command", "left_shift"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "layer_mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "o"
+          },
+          "to": [
+            {
+              "key_code": "l",
+              "modifiers": ["left_command", "left_shift"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "layer_mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "backslash"
+          },
+          "to": [
+            {
+              "key_code": "backslash"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "layer_mode",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
