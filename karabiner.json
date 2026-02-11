@@ -903,6 +903,46 @@
                                     }
                                 ],
                                 "from": {
+                                    "key_code": "3",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "3",
+                                        "modifiers": ["left_control", "left_shift", "left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    },
+                                    {
+                                        "name": "nav_mode",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "window_mode",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "system_mode",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "raycast_mode",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    }
+                                ],
+                                "from": {
                                     "key_code": "4",
                                     "modifiers": { "optional": ["any"] }
                                 },
