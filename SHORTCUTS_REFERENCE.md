@@ -50,14 +50,14 @@
 | Hyper + G | GitHub Desktop |
 | Hyper + Y | Spotify |
 | Hyper + N | GoodNotes |
-| Hyper + D | Finder |
+| Hyper + W | Finder |
 | Hyper + V | Visual Studio Code |
 
 ## Layer Toggles
 | Shortcut | Layer |
 |----------|-------|
 | Hyper + F | Navigation Layer |
-| Hyper + W | Window Management Layer |
+| Hyper + D | Window Management Layer |
 | Hyper + S | System Controls Layer |
 | Hyper + R | Raycast Tools Layer |
 
@@ -71,20 +71,20 @@
 
 ---
 
-## Window Management Layer (Hyper + W + Key)
+## Window Management Layer (Hyper + D + Key)
 | Shortcut | Action |
 |----------|--------|
-| Hyper + W + Enter | Control + Option + Enter |
-| Hyper + W + H | Left Half |
-| Hyper + W + J | Bottom Half |
-| Hyper + W + K | Top Half |
-| Hyper + W + L | Right Half |
-| Hyper + W + F | Maximize |
-| Hyper + W + U | Previous Desktop (Ctrl + Shift + Tab) |
-| Hyper + W + I | Next Desktop (Ctrl + Tab) |
-| Hyper + W + B | Snap to Left Third (Ctrl + Option + D) |
-| Hyper + W + N | Snap to Middle Third (Ctrl + Option + F) |
-| Hyper + W + M | Snap to Right Third (Ctrl + Option + G) |
+| Hyper + D + Enter | Control + Option + Enter |
+| Hyper + D + H | Left Half |
+| Hyper + D + J | Bottom Half |
+| Hyper + D + K | Top Half |
+| Hyper + D + L | Right Half |
+| Hyper + D + F | Maximize |
+| Hyper + D + U | Previous Desktop (Ctrl + Shift + Tab) |
+| Hyper + D + I | Next Desktop (Ctrl + Tab) |
+| Hyper + D + B | Snap to Left Third (Ctrl + Option + D) |
+| Hyper + D + N | Snap to Middle Third (Ctrl + Option + F) |
+| Hyper + D + M | Snap to Right Third (Ctrl + Option + G) |
 
 ---
 

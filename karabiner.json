@@ -934,21 +934,6 @@
                                         "name": "hyper",
                                         "type": "variable_if",
                                         "value": 1
-                                    },
-                                    {
-                                        "name": "window_mode",
-                                        "type": "variable_if",
-                                        "value": 0
-                                    },
-                                    {
-                                        "name": "system_mode",
-                                        "type": "variable_if",
-                                        "value": 0
-                                    },
-                                    {
-                                        "name": "raycast_mode",
-                                        "type": "variable_if",
-                                        "value": 0
                                     }
                                 ],
                                 "from": {
@@ -961,7 +946,18 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -a 'Finder.app'"
+                                        "set_variable": {
+                                            "name": "window_mode",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "window_mode",
+                                            "value": 0
+                                        }
                                     }
                                 ],
                                 "type": "basic"
@@ -1322,7 +1318,7 @@
                         ]
                     },
                     {
-                        "description": "Window Management (Hyper + W)",
+                        "description": "Window Management (Hyper + D)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1330,6 +1326,21 @@
                                         "name": "hyper",
                                         "type": "variable_if",
                                         "value": 1
+                                    },
+                                    {
+                                        "name": "window_mode",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "system_mode",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "raycast_mode",
+                                        "type": "variable_if",
+                                        "value": 0
                                     }
                                 ],
                                 "from": {
@@ -1342,18 +1353,7 @@
                                 },
                                 "to": [
                                     {
-                                        "set_variable": {
-                                            "name": "window_mode",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "window_mode",
-                                            "value": 0
-                                        }
+                                        "shell_command": "open -a 'Finder.app'"
                                     }
                                 ],
                                 "type": "basic"
