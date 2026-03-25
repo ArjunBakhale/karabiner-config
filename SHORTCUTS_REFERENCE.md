@@ -3,113 +3,108 @@
 ## Key Remaps
 | Key | Action |
 |-----|--------|
+| Left Command (hold) | Hyper Key modifier |
+| Left Command (tap) | Raycast (Option + Space) |
 | Caps Lock | Command |
-| Backslash | Delete Forward |
-| Shift + Backslash | Backslash (pipe) |
 | Right Option | Open Firefox |
 | Right Command | Left Click |
 
-## Hyper Key (Left Command)
-- **Tap alone**: Raycast (Option + Space)
-- **Hold**: Hyper modifier for all shortcuts below
+## Backslash Overrides
+| Key | Action |
+|-----|--------|
+| Hyper + \ | Backslash (passthrough) |
+| Shift + \ | Pipe (passthrough) |
+| Option + \ | Forward Delete Word |
+| Command + \ | Forward Delete to End of Line |
+| \ (alone) | Forward Delete |
 
 ## Root Level Shortcuts (Hyper + Key)
 
-### Navigation
+### Modifiers & Utility
+| Shortcut | Action |
+|----------|--------|
+| Hyper + E | Escape |
+| Hyper + X | Option (modifier) |
+| Hyper + Z | Control (modifier) |
+| Hyper + C | Command (modifier) |
+| Hyper + Space | Cmd+Shift+Space |
+
+### Vim Navigation
 | Shortcut | Action |
 |----------|--------|
 | Hyper + H | Left Arrow |
 | Hyper + J | Down Arrow |
 | Hyper + K | Up Arrow |
 | Hyper + L | Right Arrow |
-| Hyper + U | Command + Shift + J |
-| Hyper + I | Command + Shift + K |
-| Hyper + O | Command + Shift + L |
 
-### Modifiers
+### App Launchers
 | Shortcut | Action |
 |----------|--------|
-| Hyper + E | Escape |
-| Hyper + X | Option |
-| Hyper + Z | Control |
-| Hyper + C | Command |
-
-### Special Shortcuts
-| Shortcut | Action |
-|----------|--------|
-| Hyper + Space | Command + Shift + Space |
-
-### Applications
-| Shortcut | Action |
-|----------|--------|
-| Hyper + T | iTerm |
-| Hyper + Q | YPT.app |
 | Hyper + A | Firefox |
-| Hyper + B | Microsoft Outlook |
+| Hyper + B | Docker |
+| Hyper + F | Ghostty |
+| Hyper + G | Codex |
+| Hyper + I | Granola |
 | Hyper + M | Messages |
-| Hyper + G | GitHub Desktop |
-| Hyper + Y | Spotify |
-| Hyper + N | GoodNotes |
+| Hyper + N | Option+M |
+| Hyper + O | ChatGPT |
+| Hyper + P | Discord |
+| Hyper + Q | Slack |
+| Hyper + U | Conductor |
+| Hyper + V | VS Code |
 | Hyper + W | Finder |
-| Hyper + V | Visual Studio Code |
+| Hyper + Y | Spotify |
+| Hyper + ; | Raycast Notes |
+| Hyper + ' | Linear |
 
-## Layer Toggles
+### Display & Screenshots
+| Shortcut | Action |
+|----------|--------|
+| Hyper + 1 | Previous Display |
+| Hyper + 2 | Next Display |
+| Hyper + 3 | Screenshot |
+| Hyper + 4 | Screenshot Area |
+| Hyper + 5 | Screen Recording |
+
+## Sublayer Activators
 | Shortcut | Layer |
 |----------|-------|
-| Hyper + F | Navigation Layer |
-| Hyper + D | Window Management Layer |
-| Hyper + S | System Controls Layer |
-| Hyper + R | Raycast Tools Layer |
+| Hyper + D (hold) | Window Mode |
+| Hyper + S (hold) | System Mode |
+| Hyper + R (hold) | Raycast Mode |
 
 ---
 
-## Navigation Layer (Hyper + F + Key)
-| Shortcut | Action |
-|----------|--------|
-| Hyper + F + J | Page Down |
-| Hyper + F + K | Page Up |
+## Window Mode (Hyper + D + Key)
+| Key | Action |
+|-----|--------|
+| H | Left Half |
+| J | Bottom Half |
+| K | Top Half |
+| L | Right Half |
+| Enter | Maximize |
+| N | Float |
+| B | Show Desktop |
+| M | Center |
 
 ---
 
-## Window Management Layer (Hyper + D + Key)
-| Shortcut | Action |
-|----------|--------|
-| Hyper + D + Enter | Control + Option + Enter |
-| Hyper + D + H | Left Half |
-| Hyper + D + J | Bottom Half |
-| Hyper + D + K | Top Half |
-| Hyper + D + L | Right Half |
-| Hyper + D + F | Maximize |
-| Hyper + D + U | Previous Desktop (Ctrl + Shift + Tab) |
-| Hyper + D + I | Next Desktop (Ctrl + Tab) |
-| Hyper + D + B | Snap to Left Third (Ctrl + Option + D) |
-| Hyper + D + N | Snap to Middle Third (Ctrl + Option + F) |
-| Hyper + D + M | Snap to Right Third (Ctrl + Option + G) |
+## System Mode (Hyper + S + Key)
+| Key | Action |
+|-----|--------|
+| H | Rewind (Previous Song) |
+| J | Next Tab |
+| K | Previous Tab |
+| P | Play / Pause |
+| L | Fast Forward (Next Song) |
+| T | Toggle |
 
 ---
 
-## System Controls Layer (Hyper + S + Key)
-| Shortcut | Action |
-|----------|--------|
-| Hyper + S + U | Volume Up |
-| Hyper + S + J | Volume Down |
-| Hyper + S + I | Brightness Up |
-| Hyper + S + K | Brightness Down |
-| Hyper + S + L | Lock Screen (Ctrl + Cmd + Q) |
-| Hyper + S + P | Play/Pause |
-| Hyper + S + ; | Fast Forward |
-| Hyper + S + T | Option + Shift + D |
-| Hyper + S + D | Browser Back (Command + [) |
-| Hyper + S + F | Browser Forward (Command + ]) |
-
----
-
-## Raycast Tools Layer (Hyper + R + Key)
-| Shortcut | Action |
-|----------|--------|
-| Hyper + R + 1 | Connect Bluetooth Device 1 |
-| Hyper + R + 2 | Connect Bluetooth Device 2 |
-| Hyper + R + N | Dismiss Notifications |
-| Hyper + R + E | Emoji Picker |
-| Hyper + R + P | Confetti |
-| Hyper + R + H | Clipboard History |
+## Raycast Mode (Hyper + R + Key)
+| Key | Action |
+|-----|--------|
+| N | Notes |
+| E | Emoji & Symbols |
+| P | Confetti |
+| H | Clipboard History |
