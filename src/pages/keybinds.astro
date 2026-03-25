@@ -3,13 +3,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import KeybindTable from '../components/KeybindTable.astro';
 ---
 
-<BaseLayout title="Keybind Reference - Karabiner">
-  <h1>Karabiner Keybinds</h1>
-  <p class="subtitle">Hyper Key System &mdash; Left Command as Hyper</p>
+<BaseLayout title="Keybinds - Hyper Key">
+  <div class="page-header">
+    <h1 class="animate-in">Keybinds</h1>
+    <p class="page-desc animate-in delay-1">Every shortcut at a glance. Click a category to filter.</p>
+  </div>
 
-  <div class="grid">
+  <div class="filter-bar animate-in delay-2">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="hardware">Hardware</button>
+    <button class="filter-btn" data-filter="nav">Navigation</button>
+    <button class="filter-btn" data-filter="apps">Apps</button>
+    <button class="filter-btn" data-filter="window">Windows</button>
+    <button class="filter-btn" data-filter="system">System</button>
+    <button class="filter-btn" data-filter="raycast">Raycast</button>
+  </div>
 
-    <KeybindTable title="Key Remappings" badge="Hardware">
+  <div class="kb-grid">
+
+    <KeybindTable title="Key Remappings" badge="Hardware" id="hardware">
       <tr>
         <td><kbd>Left Command</kbd> <small class="highlight">(hold)</small></td>
         <td>Hyper Key modifier</td>
@@ -32,7 +44,7 @@ import KeybindTable from '../components/KeybindTable.astro';
       </tr>
     </KeybindTable>
 
-    <KeybindTable title="Backslash Remapping" badge={"\\"}>
+    <KeybindTable title="Backslash" badge={"\\"}  id="hardware">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>\</kbd></td>
         <td>Backslash (passthrough)</td>
@@ -55,7 +67,7 @@ import KeybindTable from '../components/KeybindTable.astro';
       </tr>
     </KeybindTable>
 
-    <KeybindTable title="Hyper Root" badge="No sublayer">
+    <KeybindTable title="Hyper Root" badge="Base Layer" id="nav">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>E</kbd></td>
         <td>Escape</td>
@@ -78,7 +90,7 @@ import KeybindTable from '../components/KeybindTable.astro';
       </tr>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>Tab</kbd></td>
-        <td>Next Tab <span class="accent">(Ctrl+Tab)</span></td>
+        <td>Next Tab</td>
       </tr>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>Space</kbd></td>
@@ -86,26 +98,26 @@ import KeybindTable from '../components/KeybindTable.astro';
       </tr>
     </KeybindTable>
 
-    <KeybindTable title="Vim Navigation" badge="HJKL">
+    <KeybindTable title="Vim Navigation" badge="H J K L" id="nav">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>H</kbd></td>
-        <td>Left Arrow</td>
+        <td>&larr; Left</td>
       </tr>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>J</kbd></td>
-        <td>Down Arrow</td>
+        <td>&darr; Down</td>
       </tr>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>K</kbd></td>
-        <td>Up Arrow</td>
+        <td>&uarr; Up</td>
       </tr>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>L</kbd></td>
-        <td>Right Arrow</td>
+        <td>&rarr; Right</td>
       </tr>
     </KeybindTable>
 
-    <KeybindTable title="App Launchers" badge="Hyper + Key">
+    <KeybindTable title="App Launchers" badge="Quick Launch" id="apps">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>A</kbd></td>
         <td>Firefox</td>
@@ -164,41 +176,41 @@ import KeybindTable from '../components/KeybindTable.astro';
       </tr>
     </KeybindTable>
 
-    <KeybindTable title="Display & Screenshots" badge="Numbers">
+    <KeybindTable title="Display & Screenshots" badge="Numbers" id="system">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>1</kbd></td>
-        <td>Move to Previous Display</td>
+        <td>Previous Display</td>
       </tr>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>2</kbd></td>
-        <td>Move to Next Display</td>
+        <td>Next Display</td>
       </tr>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>3</kbd></td>
-        <td>Screenshot <span class="accent">(Ctrl+Shift+Cmd+3)</span></td>
+        <td>Screenshot</td>
       </tr>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>4</kbd></td>
-        <td>Screenshot Area <span class="accent">(Ctrl+Shift+Cmd+4)</span></td>
+        <td>Screenshot Area</td>
       </tr>
     </KeybindTable>
 
-    <KeybindTable title="Sublayer Activators" badge="Hold">
+    <KeybindTable title="Sublayer Activators" badge="Hold" id="nav">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd> <small class="highlight">(hold)</small></td>
-        <td>Enter Window Mode</td>
+        <td>Window Mode</td>
       </tr>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>S</kbd> <small class="highlight">(hold)</small></td>
-        <td>Enter System Mode</td>
+        <td>System Mode</td>
       </tr>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>R</kbd> <small class="highlight">(hold)</small></td>
-        <td>Enter Raycast Mode</td>
+        <td>Raycast Mode</td>
       </tr>
     </KeybindTable>
 
-    <KeybindTable title="Window Mode" badge="Hyper + D + ...">
+    <KeybindTable title="Window Mode" badge="Hyper + D" id="window">
       <tr>
         <td><kbd>H</kbd></td>
         <td>Left Half</td>
@@ -217,38 +229,38 @@ import KeybindTable from '../components/KeybindTable.astro';
       </tr>
       <tr>
         <td><kbd>Enter</kbd><span class="separator">/</span><kbd>F</kbd></td>
-        <td>Maximize <span class="accent">(Ctrl+Opt+Enter)</span></td>
+        <td>Maximize</td>
       </tr>
       <tr>
         <td><kbd>U</kbd></td>
-        <td>Next Window <span class="accent">(Ctrl+Tab)</span></td>
+        <td>Next Window</td>
       </tr>
       <tr>
         <td><kbd>I</kbd></td>
-        <td>Previous Window <span class="accent">(Ctrl+Shift+Tab)</span></td>
+        <td>Previous Window</td>
       </tr>
       <tr>
         <td><kbd>N</kbd></td>
-        <td>Float <span class="accent">(Ctrl+Opt+F)</span></td>
+        <td>Float</td>
       </tr>
       <tr>
         <td><kbd>B</kbd></td>
-        <td>Show Desktop <span class="accent">(Ctrl+Opt+D)</span></td>
+        <td>Show Desktop</td>
       </tr>
       <tr>
         <td><kbd>M</kbd></td>
-        <td>Center <span class="accent">(Ctrl+Opt+G)</span></td>
+        <td>Center</td>
       </tr>
     </KeybindTable>
 
-    <KeybindTable title="System Mode" badge="Hyper + S + ...">
+    <KeybindTable title="System Mode" badge="Hyper + S" id="system">
       <tr>
         <td><kbd>J</kbd></td>
-        <td>Next Space <span class="accent">(Ctrl+Tab)</span></td>
+        <td>Next Space</td>
       </tr>
       <tr>
         <td><kbd>K</kbd></td>
-        <td>Previous Space <span class="accent">(Ctrl+Shift+Tab)</span></td>
+        <td>Previous Space</td>
       </tr>
       <tr>
         <td><kbd>P</kbd></td>
@@ -260,34 +272,34 @@ import KeybindTable from '../components/KeybindTable.astro';
       </tr>
       <tr>
         <td><kbd>T</kbd></td>
-        <td>Toggle <span class="accent">(Opt+Shift+D)</span></td>
+        <td>Toggle</td>
       </tr>
       <tr>
         <td><kbd>D</kbd></td>
-        <td>Back <span class="accent">(Cmd+[)</span></td>
+        <td>Back</td>
       </tr>
       <tr>
         <td><kbd>F</kbd></td>
-        <td>Forward <span class="accent">(Cmd+])</span></td>
+        <td>Forward</td>
       </tr>
     </KeybindTable>
 
-    <KeybindTable title="Raycast Mode" badge="Hyper + R + ...">
+    <KeybindTable title="Raycast Mode" badge="Hyper + R" id="raycast">
       <tr>
         <td><kbd>1</kbd></td>
-        <td>Connect Bluetooth Device 1</td>
+        <td>Bluetooth Device 1</td>
       </tr>
       <tr>
         <td><kbd>2</kbd></td>
-        <td>Connect Bluetooth Device 2</td>
+        <td>Bluetooth Device 2</td>
       </tr>
       <tr>
         <td><kbd>N</kbd></td>
-        <td>Raycast Notes</td>
+        <td>Notes</td>
       </tr>
       <tr>
         <td><kbd>E</kbd></td>
-        <td>Search Emoji & Symbols</td>
+        <td>Emoji & Symbols</td>
       </tr>
       <tr>
         <td><kbd>P</kbd></td>
@@ -303,6 +315,76 @@ import KeybindTable from '../components/KeybindTable.astro';
 </BaseLayout>
 
 <style>
-  h1 { text-align: center; }
-  .subtitle { text-align: center; }
+  .page-header {
+    padding: 3rem 0 1.5rem;
+  }
+  .page-desc {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+  .filter-bar {
+    display: flex;
+    gap: 0.35rem;
+    padding-bottom: 1.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text);
+  }
+  .filter-btn.active {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+  }
+  .kb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  @media (max-width: 500px) {
+    .kb-grid { grid-template-columns: 1fr; }
+  }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.kb-card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        cards.forEach(card => {
+          const el = card as HTMLElement;
+          if (filter === 'all' || el.dataset.category === filter) {
+            el.style.display = '';
+            el.style.animation = 'fadeUp 0.3s ease forwards';
+          } else {
+            el.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

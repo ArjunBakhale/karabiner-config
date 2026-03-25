@@ -3,96 +3,189 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SetupStep from '../components/SetupStep.astro';
 ---
 
-<BaseLayout title="Setup Guide - Karabiner">
-  <h1>Setup Guide</h1>
-  <p class="subtitle">Get your Hyper Key workflow running from scratch</p>
+<BaseLayout title="Setup - Hyper Key">
+  <div class="page-header">
+    <h1 class="animate-in">Setup</h1>
+    <p class="page-desc animate-in delay-1">Zero to Hyper in 8 steps.</p>
+  </div>
 
-  <div class="steps">
+  <div class="timeline animate-in delay-2">
 
     <SetupStep number={1} title="Install Karabiner-Elements">
-      <p>Download from <a href="https://karabiner-elements.pqrs.org/" target="_blank">karabiner-elements.pqrs.org</a> and install.</p>
-      <p style="margin-top: 0.5rem;">Grant the required permissions when prompted:</p>
+      <p><a href="https://karabiner-elements.pqrs.org/" target="_blank">Download Karabiner-Elements</a></p>
+      <p>Grant permissions when prompted:</p>
       <ul>
-        <li>System Settings &rarr; Privacy & Security &rarr; <strong>Accessibility</strong></li>
-        <li>System Settings &rarr; Privacy & Security &rarr; <strong>Input Monitoring</strong></li>
+        <li>System Settings &rarr; Privacy &rarr; <strong>Accessibility</strong></li>
+        <li>System Settings &rarr; Privacy &rarr; <strong>Input Monitoring</strong></li>
       </ul>
     </SetupStep>
 
     <SetupStep number={2} title="Install Raycast">
-      <p>Download from <a href="https://www.raycast.com/" target="_blank">raycast.com</a> and install.</p>
+      <p><a href="https://www.raycast.com/" target="_blank">Download Raycast</a></p>
       <ul>
-        <li>Set the Raycast hotkey to <kbd>Option</kbd><span class="plus">+</span><kbd>Space</kbd></li>
-        <li>Disable the default macOS Spotlight shortcut in System Settings &rarr; Keyboard &rarr; Keyboard Shortcuts &rarr; Spotlight</li>
+        <li>Set hotkey to <kbd>Option</kbd><span class="plus">+</span><kbd>Space</kbd></li>
+        <li>Disable Spotlight in System Settings &rarr; Keyboard Shortcuts</li>
       </ul>
     </SetupStep>
 
     <SetupStep number={3} title="Install Rectangle">
-      <p>Download from <a href="https://rectangleapp.com/" target="_blank">rectangleapp.com</a> and install.</p>
+      <p><a href="https://rectangleapp.com/" target="_blank">Download Rectangle</a></p>
       <ul>
-        <li>Enable "Launch at login" in Rectangle preferences</li>
+        <li>Enable <strong>Launch at login</strong></li>
       </ul>
     </SetupStep>
 
-    <SetupStep number={4} title="Install daily apps">
-      <p>Install the following apps (used as launch targets in the Hyper key config):</p>
-      <ul>
-        <li><a href="https://ghostty.org/" target="_blank">Ghostty</a> &mdash; terminal</li>
-        <li><a href="https://www.mozilla.org/firefox/" target="_blank">Firefox</a> &mdash; browser</li>
-        <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> &mdash; editor</li>
-        <li><a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a></li>
-        <li><a href="https://desktop.github.com/" target="_blank">GitHub Desktop</a></li>
-        <li><a href="https://discord.com/" target="_blank">Discord</a></li>
-        <li><a href="https://slack.com/" target="_blank">Slack</a></li>
-        <li><a href="https://www.spotify.com/" target="_blank">Spotify</a></li>
-        <li><a href="https://www.granola.ai/" target="_blank">Granola</a></li>
-        <li><a href="https://linear.app/" target="_blank">Linear</a></li>
-        <li>Codex</li>
-        <li>Messages &amp; Finder (built-in)</li>
-      </ul>
+    <SetupStep number={4} title="Install apps">
+      <div class="app-grid">
+        <a href="https://ghostty.org/" target="_blank" class="app-chip">Ghostty</a>
+        <a href="https://www.mozilla.org/firefox/" target="_blank" class="app-chip">Firefox</a>
+        <a href="https://code.visualstudio.com/" target="_blank" class="app-chip">VS Code</a>
+        <a href="https://www.docker.com/products/docker-desktop/" target="_blank" class="app-chip">Docker</a>
+        <a href="https://desktop.github.com/" target="_blank" class="app-chip">GitHub Desktop</a>
+        <a href="https://discord.com/" target="_blank" class="app-chip">Discord</a>
+        <a href="https://slack.com/" target="_blank" class="app-chip">Slack</a>
+        <a href="https://www.spotify.com/" target="_blank" class="app-chip">Spotify</a>
+        <a href="https://www.granola.ai/" target="_blank" class="app-chip">Granola</a>
+        <a href="https://linear.app/" target="_blank" class="app-chip">Linear</a>
+        <span class="app-chip builtin">Codex</span>
+        <span class="app-chip builtin">Messages</span>
+        <span class="app-chip builtin">Finder</span>
+      </div>
     </SetupStep>
 
     <SetupStep number={5} title="Install Raycast extensions">
-      <p>Open Raycast and install these extensions from the store:</p>
-      <ul>
-        <li>Toothpick (Bluetooth manager)</li>
-        <li>Clipboard History</li>
-        <li>Emoji & Symbols</li>
-        <li>Confetti</li>
-        <li>Notes</li>
-      </ul>
+      <div class="app-grid">
+        <span class="app-chip ext">Toothpick</span>
+        <span class="app-chip ext">Clipboard History</span>
+        <span class="app-chip ext">Emoji & Symbols</span>
+        <span class="app-chip ext">Confetti</span>
+        <span class="app-chip ext">Notes</span>
+      </div>
     </SetupStep>
 
-    <SetupStep number={6} title="Paste the Karabiner config">
-      <p>Copy the contents of <code>karabiner.json</code> from this repository and paste it into:</p>
-      <pre><code>~/.config/karabiner/karabiner.json</code></pre>
-      <p style="margin-top: 0.5rem;">You can do this via terminal:</p>
+    <SetupStep number={6} title="Paste the config">
+      <p>Run one command:</p>
       <pre><code>curl -fsSL https://raw.githubusercontent.com/arjunbakhale/karabiner/main/karabiner.json \
   -o ~/.config/karabiner/karabiner.json</code></pre>
-      <p style="margin-top: 0.5rem;">Or clone the repo and symlink:</p>
+      <p>Or clone the whole repo:</p>
       <pre><code>git clone https://github.com/arjunbakhale/karabiner.git ~/.config/karabiner</code></pre>
     </SetupStep>
 
-    <SetupStep number={7} title="Configure keyboard settings">
-      <p>In System Settings &rarr; Keyboard:</p>
+    <SetupStep number={7} title="Keyboard settings">
+      <p>System Settings &rarr; Keyboard:</p>
       <ul>
-        <li>Set <strong>Key Repeat Rate</strong> to <strong>Fast</strong></li>
-        <li>Set <strong>Delay Until Repeat</strong> to <strong>Short</strong></li>
+        <li><strong>Key Repeat Rate</strong> &rarr; Fast</li>
+        <li><strong>Delay Until Repeat</strong> &rarr; Short</li>
       </ul>
     </SetupStep>
 
-    <SetupStep number={8} title="Verify everything works">
-      <p>Test the following keybinds to confirm setup is complete:</p>
-      <ul class="checklist">
-        <li>Tap <kbd>Left Command</kbd> &rarr; Raycast opens</li>
-        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>H/J/K/L</kbd> &rarr; arrow key navigation</li>
-        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>A</kbd> &rarr; Firefox opens</li>
-        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>F</kbd> &rarr; Ghostty opens</li>
-        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd> then <kbd>H</kbd> &rarr; window snaps left half</li>
-        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd> then <kbd>Enter</kbd> &rarr; window maximizes</li>
-        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>S</kbd> then <kbd>P</kbd> &rarr; play/pause media</li>
-        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>R</kbd> then <kbd>E</kbd> &rarr; emoji picker</li>
-      </ul>
+    <SetupStep number={8} title="Verify" last={true}>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"><span>Tap <kbd>Left Cmd</kbd> &rarr; Raycast opens</span></label>
+        <label class="check-item"><input type="checkbox"><span><kbd>Hyper</kbd><span class="plus">+</span><kbd>H J K L</kbd> &rarr; arrows work</span></label>
+        <label class="check-item"><input type="checkbox"><span><kbd>Hyper</kbd><span class="plus">+</span><kbd>A</kbd> &rarr; Firefox opens</span></label>
+        <label class="check-item"><input type="checkbox"><span><kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd> then <kbd>H</kbd> &rarr; left half</span></label>
+        <label class="check-item"><input type="checkbox"><span><kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd> then <kbd>Enter</kbd> &rarr; maximize</span></label>
+        <label class="check-item"><input type="checkbox"><span><kbd>Hyper</kbd><span class="plus">+</span><kbd>S</kbd> then <kbd>P</kbd> &rarr; play/pause</span></label>
+        <label class="check-item"><input type="checkbox"><span><kbd>Hyper</kbd><span class="plus">+</span><kbd>R</kbd> then <kbd>E</kbd> &rarr; emoji picker</span></label>
+      </div>
     </SetupStep>
 
   </div>
 </BaseLayout>
+
+<style>
+  .page-header {
+    padding: 3rem 0 2rem;
+  }
+  .page-desc {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+  .timeline {
+    max-width: 720px;
+  }
+
+  /* App chips */
+  .app-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+  .app-chip {
+    display: inline-block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text);
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+  a.app-chip:hover {
+    border-color: var(--accent-mid);
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+  .app-chip.builtin {
+    color: var(--text-muted);
+    border-style: dashed;
+  }
+  .app-chip.ext {
+    background: var(--accent-light);
+    border-color: var(--accent-mid);
+    color: var(--accent);
+  }
+
+  /* Checklist */
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    padding: 0.4rem 0;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    transition: color 0.15s;
+  }
+  .check-item:has(input:checked) span {
+    text-decoration: line-through;
+    color: var(--text-muted);
+  }
+  .check-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 2px solid var(--border);
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .check-item input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .check-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+</style>

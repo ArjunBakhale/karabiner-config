@@ -2,41 +2,276 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Karabiner Hyper Key Setup">
-  <div class="hero">
-    <h1>Karabiner Hyper Key Setup</h1>
-    <p class="subtitle">A complete keyboard-driven workflow using Karabiner-Elements, Raycast, and Rectangle. Left Command becomes a Hyper key that unlocks vim-style navigation, app launching, window management, and more.</p>
-  </div>
+<BaseLayout title="Hyper Key">
+  <section class="hero dot-bg">
+    <div class="hero-inner">
+      <div class="hero-badge animate-in">
+        <span class="badge-dot"></span>
+        Karabiner-Elements
+      </div>
+      <h1 class="animate-in delay-1">
+        One key.<br><span class="hero-accent">Infinite control.</span>
+      </h1>
+      <p class="hero-sub animate-in delay-2">
+        Turn Left Command into a Hyper key. Launch apps, navigate with vim keys,
+        manage windows, and control your Mac — all from the home row.
+      </p>
+      <div class="hero-actions animate-in delay-3">
+        <a href="/setup" class="btn-primary">Get started</a>
+        <a href="/keybinds" class="btn-secondary">View keybinds</a>
+      </div>
+    </div>
+  </section>
 
-  <div class="card-grid">
-    <a href="/setup" class="card">
-      <h3>Setup Guide</h3>
-      <p>Step-by-step walkthrough to install and configure everything from scratch.</p>
-    </a>
-    <a href="/keybinds" class="card">
-      <h3>Keybind Reference</h3>
-      <p>Complete reference of all keybindings organized by category &mdash; navigation, apps, windows, and more.</p>
-    </a>
-    <a href="/architecture" class="card">
-      <h3>How It Works</h3>
-      <p>Understand the Hyper key concept, sublayer system, and how to extend the config.</p>
-    </a>
-  </div>
+  <section class="features">
+    <div class="feature-grid">
+      <a href="/setup" class="feature-card glow-card animate-in delay-2">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3>Setup Guide</h3>
+        <p>8 steps. From zero to fully configured.</p>
+        <span class="feature-arrow">&rarr;</span>
+      </a>
+
+      <a href="/keybinds" class="feature-card glow-card animate-in delay-3">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M6 16h8"/></svg>
+        </div>
+        <h3>Keybind Reference</h3>
+        <p>Every shortcut. Searchable and categorized.</p>
+        <span class="feature-arrow">&rarr;</span>
+      </a>
+
+      <a href="/architecture" class="feature-card glow-card animate-in delay-4">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m16.36-5.36l-4.24 4.24m-4.24 0L4.64 6.64m12.72 12.72l-4.24-4.24m-4.24 0l-4.24 4.24"/></svg>
+        </div>
+        <h3>How It Works</h3>
+        <p>The architecture. Layers, sublayers, variables.</p>
+        <span class="feature-arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="quick-peek animate-in delay-4">
+    <div class="peek-header">
+      <h2>Quick peek</h2>
+    </div>
+    <div class="peek-grid">
+      <div class="peek-item">
+        <kbd>Cmd</kbd>
+        <span class="peek-label">tap</span>
+        <span class="peek-result">Raycast</span>
+      </div>
+      <div class="peek-item">
+        <kbd>Hyper</kbd><span class="plus">+</span><kbd>H J K L</kbd>
+        <span class="peek-result">Arrow keys</span>
+      </div>
+      <div class="peek-item">
+        <kbd>Hyper</kbd><span class="plus">+</span><kbd>A</kbd>
+        <span class="peek-result">Firefox</span>
+      </div>
+      <div class="peek-item">
+        <kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd><span class="plus">+</span><kbd>H</kbd>
+        <span class="peek-result">Left half</span>
+      </div>
+      <div class="peek-item">
+        <kbd>Hyper</kbd><span class="plus">+</span><kbd>S</kbd><span class="plus">+</span><kbd>P</kbd>
+        <span class="peek-result">Play/Pause</span>
+      </div>
+      <div class="peek-item">
+        <kbd>Hyper</kbd><span class="plus">+</span><kbd>R</kbd><span class="plus">+</span><kbd>E</kbd>
+        <span class="peek-result">Emoji</span>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
   .hero {
+    padding: 6rem 0 4rem;
     text-align: center;
-    padding: 3rem 0 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, var(--bg), transparent);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.35rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease infinite;
   }
   .hero h1 {
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
+    font-size: 4.5rem;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+    line-height: 1.05;
   }
-  .hero .subtitle {
-    max-width: 640px;
-    margin: 0 auto 2rem;
-    font-size: 1.05rem;
+  .hero-accent {
+    background: linear-gradient(135deg, var(--accent), #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
     line-height: 1.7;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  .btn-primary {
+    background: var(--text);
+    color: white;
+    padding: 0.65rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: var(--bg);
+    color: var(--text);
+    padding: 0.65rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-muted);
+  }
+
+  /* Features */
+  .features {
+    padding: 2rem 0;
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .feature-card {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--bg-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+  }
+  .feature-card h3 {
+    font-size: 1.05rem;
+  }
+  .feature-card p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    flex: 1;
+  }
+  .feature-arrow {
+    color: var(--accent);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: transform 0.2s;
+  }
+  .feature-card:hover .feature-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Quick Peek */
+  .quick-peek {
+    padding: 3rem 0;
+  }
+  .peek-header {
+    margin-bottom: 1.5rem;
+  }
+  .peek-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .peek-item {
+    background: var(--bg-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    transition: border-color 0.2s;
+  }
+  .peek-item:hover {
+    border-color: var(--accent-mid);
+  }
+  .peek-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+  .peek-result {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .hero { padding: 4rem 0 2rem; }
+    .feature-grid, .peek-grid { grid-template-columns: 1fr; }
   }
 </style>

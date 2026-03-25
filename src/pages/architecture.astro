@@ -24,115 +24,440 @@ const conditionExample = `"conditions": [{
 }]`;
 ---
 
-<BaseLayout title="Architecture - Karabiner">
-  <h1>How It Works</h1>
-  <p class="subtitle">Understanding the Hyper key system and sublayer architecture</p>
+<BaseLayout title="How It Works - Hyper Key">
+  <div class="page-header">
+    <h1 class="animate-in">How It Works</h1>
+    <p class="page-desc animate-in delay-1">The whole system, visualized.</p>
+  </div>
 
-  <div class="sections">
+  <div class="arch-sections">
 
-    <div class="section">
+    <!-- The Hyper Key -->
+    <section class="arch-section animate-in delay-2">
+      <div class="section-label">Core concept</div>
       <h2>The Hyper Key</h2>
-      <p>The core idea is remapping <kbd>Left Command</kbd> into a dual-purpose key:</p>
-      <ul>
-        <li><strong>Hold</strong> &rarr; acts as a Hyper modifier (Ctrl+Shift+Cmd+Opt internally) that doesn't conflict with any standard macOS shortcuts</li>
-        <li><strong>Tap</strong> &rarr; sends <kbd>Option</kbd><span class="plus">+</span><kbd>Space</kbd> to launch Raycast</li>
-      </ul>
-      <p style="margin-top: 0.75rem;">This gives you a dedicated modifier key that opens up the entire keyboard for custom bindings, without interfering with normal app shortcuts.</p>
-    </div>
+      <div class="hyper-demo">
+        <div class="key-visual">
+          <div class="key-box">
+            <kbd class="key-large">Left Cmd</kbd>
+          </div>
+          <div class="key-arrow">
+            <svg width="40" height="24" fill="none"><path d="M4 12h28m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="key-outcomes">
+            <div class="outcome">
+              <span class="outcome-trigger">hold</span>
+              <span class="outcome-result">Hyper modifier</span>
+            </div>
+            <div class="outcome">
+              <span class="outcome-trigger tap">tap</span>
+              <span class="outcome-result">Raycast</span>
+            </div>
+          </div>
+        </div>
+        <p class="arch-note">Internally sends Ctrl+Shift+Cmd+Opt — a combo no app uses, so every key is free for custom bindings.</p>
+      </div>
+    </section>
 
-    <div class="section">
+    <!-- Layer Diagram -->
+    <section class="arch-section animate-in delay-3">
+      <div class="section-label">Architecture</div>
+      <h2>Three Layers</h2>
+      <div class="layers">
+        <div class="layer layer-0">
+          <div class="layer-header">
+            <span class="layer-tag">Layer 0</span>
+            <span class="layer-name">Hardware Remaps</span>
+          </div>
+          <div class="layer-keys">
+            <div class="layer-key"><kbd>Caps Lock</kbd> <span>&rarr; Command</span></div>
+            <div class="layer-key"><kbd>Right Opt</kbd> <span>&rarr; Firefox</span></div>
+            <div class="layer-key"><kbd>Right Cmd</kbd> <span>&rarr; Click</span></div>
+            <div class="layer-key"><kbd>\</kbd> <span>&rarr; Fwd Delete</span></div>
+          </div>
+        </div>
+        <div class="layer-connector">
+          <div class="connector-line"></div>
+          <div class="connector-dot"></div>
+        </div>
+        <div class="layer layer-1">
+          <div class="layer-header">
+            <span class="layer-tag tag-1">Layer 1</span>
+            <span class="layer-name">Hyper Root</span>
+          </div>
+          <div class="layer-keys">
+            <div class="layer-key"><kbd>H J K L</kbd> <span>&rarr; Arrows</span></div>
+            <div class="layer-key"><kbd>A B F G ...</kbd> <span>&rarr; App Launch</span></div>
+            <div class="layer-key"><kbd>X Z C</kbd> <span>&rarr; Modifiers</span></div>
+            <div class="layer-key"><kbd>E</kbd> <span>&rarr; Escape</span></div>
+          </div>
+        </div>
+        <div class="layer-connector">
+          <div class="connector-line"></div>
+          <div class="connector-dot"></div>
+        </div>
+        <div class="layer layer-2">
+          <div class="layer-header">
+            <span class="layer-tag tag-2">Layer 2</span>
+            <span class="layer-name">Sublayers</span>
+          </div>
+          <div class="sublayer-chips">
+            <div class="sublayer-chip">
+              <span class="chip-key">D</span>
+              <span class="chip-label">Windows</span>
+            </div>
+            <div class="sublayer-chip">
+              <span class="chip-key">S</span>
+              <span class="chip-label">System</span>
+            </div>
+            <div class="sublayer-chip">
+              <span class="chip-key">R</span>
+              <span class="chip-label">Raycast</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How Sublayers Work -->
+    <section class="arch-section animate-in delay-4">
+      <div class="section-label">Mechanism</div>
       <h2>Variable-Based Sublayers</h2>
-      <p>Karabiner doesn't natively support "modes" or sublayers, so this config implements them using variables. When you hold a sublayer activator key, a variable is set to <code>1</code>. Other rules check that variable before firing.</p>
-      <div class="diagram">
-        <span style="color: #7f8fff;">Hyper</span> + <span style="color: #53d8fb;">D</span> (hold) &rarr; sets <span style="color: #4ade80;">d_sublayer = 1</span><br>
-        &nbsp;&nbsp;While <span style="color: #4ade80;">d_sublayer = 1</span>:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #53d8fb;">H</span> &rarr; Left Half &nbsp;(Rectangle shortcut)<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #53d8fb;">L</span> &rarr; Right Half (Rectangle shortcut)<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #53d8fb;">F</span> &rarr; Maximize &nbsp;&nbsp;(Rectangle shortcut)<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;...<br>
-        <span style="color: #7f8fff;">Hyper</span> + <span style="color: #53d8fb;">D</span> (release) &rarr; sets <span style="color: #e94560;">d_sublayer = 0</span>
+      <p class="arch-desc">Karabiner has no native mode system. This config fakes it with variables.</p>
+      <div class="flow-demo">
+        <div class="flow-step">
+          <span class="flow-num">1</span>
+          <div class="flow-content">
+            <span>Hold <kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd></span>
+            <span class="flow-arrow">&rarr;</span>
+            <code>d_sublayer = 1</code>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-num">2</span>
+          <div class="flow-content">
+            <span>Press <kbd>H</kbd></span>
+            <span class="flow-arrow">&rarr;</span>
+            <span>Left Half <small class="accent">(only if d_sublayer = 1)</small></span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-num">3</span>
+          <div class="flow-content">
+            <span>Release <kbd>D</kbd></span>
+            <span class="flow-arrow">&rarr;</span>
+            <code>d_sublayer = 0</code>
+          </div>
+        </div>
       </div>
-      <p>This pattern is used for three sublayers:</p>
-      <table>
-        <tr>
-          <td><kbd>D</kbd></td>
-          <td>Window management (Rectangle shortcuts)</td>
-        </tr>
-        <tr>
-          <td><kbd>S</kbd></td>
-          <td>System controls (spaces, media, navigation)</td>
-        </tr>
-        <tr>
-          <td><kbd>R</kbd></td>
-          <td>Raycast extensions (Bluetooth, emoji, clipboard)</td>
-        </tr>
-      </table>
-    </div>
+      <p class="arch-note">Same key, different meaning depending on active sublayer. <kbd>H</kbd> = Left Arrow (root), Left Half (window), Clipboard (raycast).</p>
+    </section>
 
-    <div class="section">
-      <h2>Layer Diagram</h2>
-      <div class="diagram">
-        <span style="color: #e94560;">Layer 0: Hardware Remaps</span><br>
-        &nbsp;&nbsp;Caps Lock &rarr; Command<br>
-        &nbsp;&nbsp;Right Option &rarr; Firefox<br>
-        &nbsp;&nbsp;Right Command &rarr; Left Click<br>
-        &nbsp;&nbsp;Backslash &rarr; Forward Delete (+ modifier variants)<br>
-        <br>
-        <span style="color: #7f8fff;">Layer 1: Hyper Root</span><br>
-        &nbsp;&nbsp;Left Command (hold) &rarr; Hyper modifier<br>
-        &nbsp;&nbsp;Hyper + H/J/K/L &rarr; Arrow keys<br>
-        &nbsp;&nbsp;Hyper + E &rarr; Escape<br>
-        &nbsp;&nbsp;Hyper + A/B/F/G/... &rarr; App launchers<br>
-        &nbsp;&nbsp;Hyper + X/Z/C &rarr; Modifier pass-throughs<br>
-        <br>
-        <span style="color: #4ade80;">Layer 2: Sublayers (variable-gated)</span><br>
-        &nbsp;&nbsp;Hyper + D + ... &rarr; Window mode<br>
-        &nbsp;&nbsp;Hyper + S + ... &rarr; System mode<br>
-        &nbsp;&nbsp;Hyper + R + ... &rarr; Raycast mode
+    <!-- Philosophy -->
+    <section class="arch-section animate-in delay-5">
+      <div class="section-label">Philosophy</div>
+      <h2>Design Principles</h2>
+      <div class="principles">
+        <div class="principle">
+          <div class="principle-title">Home row first</div>
+          <div class="principle-desc">Most-used actions on H, J, K, L, D, S, F</div>
+        </div>
+        <div class="principle">
+          <div class="principle-title">Mnemonic keys</div>
+          <div class="principle-desc">A = address bar, F = terminal, V = VS Code, G = GitHub</div>
+        </div>
+        <div class="principle">
+          <div class="principle-title">No modifier combos</div>
+          <div class="principle-desc">Everything through one key (left thumb), fingers stay on home row</div>
+        </div>
+        <div class="principle">
+          <div class="principle-title">Namespaced layers</div>
+          <div class="principle-desc">D/S/R sublayers let keys be reused across contexts</div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>Key Remapping Philosophy</h2>
-      <ul>
-        <li><strong>Home row priority</strong> &mdash; the most-used actions live on H, J, K, L, D, S, F</li>
-        <li><strong>Mnemonic bindings</strong> &mdash; <kbd>A</kbd> for browser (address bar), <kbd>F</kbd> for terminal (Ghostty), <kbd>V</kbd> for VS Code, <kbd>G</kbd> for GitHub</li>
-        <li><strong>No modifier gymnastics</strong> &mdash; everything flows through Hyper (left thumb), keeping fingers on home row</li>
-        <li><strong>Sublayers for namespacing</strong> &mdash; D/S/R create clean groups so keys can be reused (e.g. <kbd>H</kbd> is Left Arrow at root, Left Half in window mode, Clipboard History in Raycast mode)</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Adding New Bindings</h2>
-      <p>To add a new Hyper key binding, add a rule to the <code>rules</code> array in <code>karabiner.json</code>:</p>
+    <!-- Extending -->
+    <section class="arch-section animate-in delay-5">
+      <div class="section-label">Extend</div>
+      <h2>Add Your Own</h2>
+      <p class="arch-desc">Add a rule to <code>karabiner.json</code>:</p>
       <pre><code set:text={exampleRule} /></pre>
-      <p style="margin-top: 0.75rem;">To add a binding inside a sublayer (e.g. window mode), add a condition checking the sublayer variable:</p>
+      <p class="arch-desc" style="margin-top: 1rem;">For sublayer bindings, add a condition:</p>
       <pre><code set:text={conditionExample} /></pre>
-      <p style="margin-top: 0.75rem;">See the <a href="/keybinds">keybind reference</a> for the full list of current bindings.</p>
-    </div>
+    </section>
 
   </div>
 </BaseLayout>
 
 <style>
-  .sections {
+  .page-header {
+    padding: 3rem 0 2rem;
+  }
+  .page-desc {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+  .arch-sections {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 3rem;
+    max-width: 720px;
+    padding-bottom: 2rem;
   }
-  .sections .section p {
-    color: #bbb;
+  .arch-section {
+    position: relative;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .arch-section h2 {
+    margin-bottom: 1rem;
+  }
+  .arch-desc {
+    color: var(--text-secondary);
     font-size: 0.92rem;
     line-height: 1.7;
+    margin-bottom: 1rem;
   }
-  .sections .section ul {
-    color: #bbb;
+  .arch-note {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Hyper demo */
+  .hyper-demo {
+    margin-top: 0.5rem;
+  }
+  .key-visual {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--bg-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .key-large {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-width: 2px;
+    border-bottom-width: 3px;
+  }
+  .key-arrow {
+    color: var(--text-muted);
+  }
+  .key-outcomes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .outcome {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .outcome-trigger {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 4px;
+    width: 42px;
+    text-align: center;
+  }
+  .outcome-trigger.tap {
+    color: var(--accent);
+    border-color: var(--accent-mid);
+    background: var(--accent-light);
+  }
+  .outcome-result {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  /* Layers */
+  .layers {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .layer {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    transition: all 0.2s;
+  }
+  .layer:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+  .layer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .layer-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: var(--bg-muted);
+    color: var(--text-muted);
+  }
+  .tag-1 { background: var(--bg-muted); color: var(--text); }
+  .tag-2 { background: var(--accent-light); color: var(--accent); }
+  .layer-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .layer-keys {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .layer-key {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: var(--bg-muted);
+    padding: 0.3rem 0.75rem;
+    border-radius: 8px;
+  }
+  .layer-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 32px;
+  }
+  .connector-line {
+    width: 2px;
+    flex: 1;
+    background: var(--border);
+  }
+  .connector-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border-hover);
+  }
+  .sublayer-chips {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .sublayer-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-light);
+    border: 1px solid var(--accent-mid);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    transition: transform 0.2s;
+  }
+  .sublayer-chip:hover {
+    transform: translateY(-2px);
+  }
+  .chip-key {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+  .chip-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  /* Flow */
+  .flow-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--bg-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+  }
+  .flow-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--text);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .flow-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    flex-wrap: wrap;
+  }
+  .flow-arrow {
+    color: var(--text-muted);
+  }
+
+  /* Principles */
+  .principles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .principle {
+    background: var(--bg-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .principle:hover {
+    border-color: var(--accent-mid);
+  }
+  .principle-title {
+    font-weight: 600;
     font-size: 0.92rem;
-    margin: 0.5rem 0;
-    padding-left: 1.25rem;
+    margin-bottom: 0.25rem;
   }
-  .sections .section li {
-    margin-bottom: 0.35rem;
-    line-height: 1.7;
+  .principle-desc {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .key-visual { flex-direction: column; text-align: center; }
+    .sublayer-chips { flex-direction: column; }
+    .principles { grid-template-columns: 1fr; }
   }
 </style>

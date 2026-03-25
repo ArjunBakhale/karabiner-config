@@ -2,14 +2,43 @@
 interface Props {
   title: string;
   badge: string;
+  id?: string;
 }
 
-const { title, badge } = Astro.props;
+const { title, badge, id } = Astro.props;
 ---
 
-<div class="section">
-  <h2>{title} <span class="badge">{badge}</span></h2>
+<div class="kb-card glow-card" data-category={id}>
+  <div class="kb-header">
+    <h3>{title}</h3>
+    <span class="kb-badge">{badge}</span>
+  </div>
   <table>
     <slot />
   </table>
 </div>
+
+<style>
+  .kb-card {
+    padding: 1.25rem 1.5rem;
+  }
+  .kb-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  .kb-header h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .kb-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+</style>
