@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karabiner Keybind Reference</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .section {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid #1a2744;
+  }
+  .section h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #7f8fff;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section h2 .badge {
+    font-size: 0.7rem;
+    background: #7f8fff22;
+    color: #7f8fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  tr { border-bottom: 1px solid #1a2744; }
+  tr:last-child { border-bottom: none; }
+  td {
+    padding: 0.45rem 0;
+    vertical-align: middle;
+  }
+  td:first-child {
+    width: 45%;
+    white-space: nowrap;
+  }
+  td:last-child {
+    color: #bbb;
+    font-size: 0.88rem;
+  }
+  kbd {
+    display: inline-block;
+    background: #0f3460;
+    border: 1px solid #1a4a80;
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: #e0e0e0;
+    box-shadow: 0 1px 0 #0a2040;
+    line-height: 1.4;
+  }
+  .plus {
+    color: #555;
+    font-size: 0.75rem;
+    margin: 0 2px;
+  }
+  .separator {
+    color: #555;
+    margin: 0 4px;
+  }
+  .accent { color: #e94560; }
+  .highlight { color: #53d8fb; }
+  .green { color: #4ade80; }
+</style>
+</head>
+<body>
+
+<h1>Karabiner Keybinds</h1>
+<p class="subtitle">Hyper Key System &mdash; Left Command as Hyper</p>
+
+<div class="grid">
+
+  <!-- Key Remappings -->
+  <div class="section">
+    <h2>Key Remappings <span class="badge">Hardware</span></h2>
+    <table>
+      <tr>
+        <td><kbd>Left Command</kbd> <small class="highlight">(hold)</small></td>
+        <td>Hyper Key modifier</td>
+      </tr>
+      <tr>
+        <td><kbd>Left Command</kbd> <small class="green">(tap)</small></td>
+        <td>Raycast <span class="accent">(Opt+Space)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>Caps Lock</kbd></td>
+        <td>Command</td>
+      </tr>
+      <tr>
+        <td><kbd>Right Option</kbd></td>
+        <td>Open Firefox</td>
+      </tr>
+      <tr>
+        <td><kbd>Right Command</kbd></td>
+        <td>Left Click</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Backslash Remapping -->
+  <div class="section">
+    <h2>Backslash Remapping <span class="badge">\</span></h2>
+    <table>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>\</kbd></td>
+        <td>Backslash (passthrough)</td>
+      </tr>
+      <tr>
+        <td><kbd>Shift</kbd><span class="plus">+</span><kbd>\</kbd></td>
+        <td>Pipe (passthrough)</td>
+      </tr>
+      <tr>
+        <td><kbd>Option</kbd><span class="plus">+</span><kbd>\</kbd></td>
+        <td>Forward Delete Word</td>
+      </tr>
+      <tr>
+        <td><kbd>Command</kbd><span class="plus">+</span><kbd>\</kbd></td>
+        <td>Forward Delete to End of Line</td>
+      </tr>
+      <tr>
+        <td><kbd>\</kbd> <small class="highlight">(alone)</small></td>
+        <td>Forward Delete</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Hyper Root -->
+  <div class="section">
+    <h2>Hyper Root <span class="badge">No sublayer</span></h2>
+    <table>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>E</kbd></td>
+        <td>Escape</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>X</kbd></td>
+        <td>Option (modifier)</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>Z</kbd></td>
+        <td>Control (modifier)</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>C</kbd></td>
+        <td>Command (modifier)</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>V</kbd></td>
+        <td>Open VS Code</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>Tab</kbd></td>
+        <td>Next Tab <span class="accent">(Ctrl+Tab)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>Space</kbd></td>
+        <td><span class="accent">Cmd+Shift+Space</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Vim Navigation -->
+  <div class="section">
+    <h2>Vim Navigation <span class="badge">HJKL</span></h2>
+    <table>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>H</kbd></td>
+        <td>Left Arrow</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>J</kbd></td>
+        <td>Down Arrow</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>K</kbd></td>
+        <td>Up Arrow</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>L</kbd></td>
+        <td>Right Arrow</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- App Launchers -->
+  <div class="section">
+    <h2>App Launchers <span class="badge">Hyper + Key</span></h2>
+    <table>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>A</kbd></td>
+        <td>Firefox</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>B</kbd></td>
+        <td>Docker</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>F</kbd></td>
+        <td>Ghostty</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>G</kbd></td>
+        <td>GitHub Desktop</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>I</kbd></td>
+        <td>Granola</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>M</kbd></td>
+        <td>Messages</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>N</kbd></td>
+        <td><span class="accent">Option+M</span></td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>P</kbd></td>
+        <td>Discord</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>Q</kbd></td>
+        <td>Slack</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>U</kbd></td>
+        <td>Codex</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>W</kbd></td>
+        <td>Finder</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>Y</kbd></td>
+        <td>Spotify</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>;</kbd></td>
+        <td>Raycast Notes</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>'</kbd></td>
+        <td>Linear</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Display & Screenshots -->
+  <div class="section">
+    <h2>Display & Screenshots <span class="badge">Numbers</span></h2>
+    <table>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>1</kbd></td>
+        <td>Move to Previous Display</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>2</kbd></td>
+        <td>Move to Next Display</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>3</kbd></td>
+        <td>Screenshot <span class="accent">(Ctrl+Shift+Cmd+3)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>4</kbd></td>
+        <td>Screenshot Area <span class="accent">(Ctrl+Shift+Cmd+4)</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Sublayer Activators -->
+  <div class="section">
+    <h2>Sublayer Activators <span class="badge">Hold</span></h2>
+    <table>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd> <small class="highlight">(hold)</small></td>
+        <td>Enter Window Mode</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>S</kbd> <small class="highlight">(hold)</small></td>
+        <td>Enter System Mode</td>
+      </tr>
+      <tr>
+        <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>R</kbd> <small class="highlight">(hold)</small></td>
+        <td>Enter Raycast Mode</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Window Mode -->
+  <div class="section">
+    <h2>Window Mode <span class="badge">Hyper + D + ...</span></h2>
+    <table>
+      <tr>
+        <td><kbd>H</kbd></td>
+        <td>Left Half</td>
+      </tr>
+      <tr>
+        <td><kbd>J</kbd></td>
+        <td>Bottom Half</td>
+      </tr>
+      <tr>
+        <td><kbd>K</kbd></td>
+        <td>Top Half</td>
+      </tr>
+      <tr>
+        <td><kbd>L</kbd></td>
+        <td>Right Half</td>
+      </tr>
+      <tr>
+        <td><kbd>Enter</kbd><span class="separator">/</span><kbd>F</kbd></td>
+        <td>Maximize <span class="accent">(Ctrl+Opt+Enter)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>U</kbd></td>
+        <td>Next Window <span class="accent">(Ctrl+Tab)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>I</kbd></td>
+        <td>Previous Window <span class="accent">(Ctrl+Shift+Tab)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>N</kbd></td>
+        <td>Float <span class="accent">(Ctrl+Opt+F)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>B</kbd></td>
+        <td>Show Desktop <span class="accent">(Ctrl+Opt+D)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>M</kbd></td>
+        <td>Center <span class="accent">(Ctrl+Opt+G)</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- System Mode -->
+  <div class="section">
+    <h2>System Mode <span class="badge">Hyper + S + ...</span></h2>
+    <table>
+      <tr>
+        <td><kbd>J</kbd></td>
+        <td>Next Space <span class="accent">(Ctrl+Tab)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>K</kbd></td>
+        <td>Previous Space <span class="accent">(Ctrl+Shift+Tab)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>P</kbd></td>
+        <td>Play / Pause</td>
+      </tr>
+      <tr>
+        <td><kbd>;</kbd></td>
+        <td>Fast Forward</td>
+      </tr>
+      <tr>
+        <td><kbd>T</kbd></td>
+        <td>Toggle <span class="accent">(Opt+Shift+D)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>D</kbd></td>
+        <td>Back <span class="accent">(Cmd+[)</span></td>
+      </tr>
+      <tr>
+        <td><kbd>F</kbd></td>
+        <td>Forward <span class="accent">(Cmd+])</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Raycast Mode -->
+  <div class="section">
+    <h2>Raycast Mode <span class="badge">Hyper + R + ...</span></h2>
+    <table>
+      <tr>
+        <td><kbd>1</kbd></td>
+        <td>Connect Bluetooth Device 1</td>
+      </tr>
+      <tr>
+        <td><kbd>2</kbd></td>
+        <td>Connect Bluetooth Device 2</td>
+      </tr>
+      <tr>
+        <td><kbd>N</kbd></td>
+        <td>Raycast Notes</td>
+      </tr>
+      <tr>
+        <td><kbd>E</kbd></td>
+        <td>Search Emoji & Symbols</td>
+      </tr>
+      <tr>
+        <td><kbd>P</kbd></td>
+        <td>Confetti</td>
+      </tr>
+      <tr>
+        <td><kbd>H</kbd></td>
+        <td>Clipboard History</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>
