@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SetupStep from '../components/SetupStep.astro';
+---
+
+<BaseLayout title="Setup Guide - Karabiner">
+  <h1>Setup Guide</h1>
+  <p class="subtitle">Get your Hyper Key workflow running from scratch</p>
+
+  <div class="steps">
+
+    <SetupStep number={1} title="Install Karabiner-Elements">
+      <p>Download from <a href="https://karabiner-elements.pqrs.org/" target="_blank">karabiner-elements.pqrs.org</a> and install.</p>
+      <p style="margin-top: 0.5rem;">Grant the required permissions when prompted:</p>
+      <ul>
+        <li>System Settings &rarr; Privacy & Security &rarr; <strong>Accessibility</strong></li>
+        <li>System Settings &rarr; Privacy & Security &rarr; <strong>Input Monitoring</strong></li>
+      </ul>
+    </SetupStep>
+
+    <SetupStep number={2} title="Install Raycast">
+      <p>Download from <a href="https://www.raycast.com/" target="_blank">raycast.com</a> and install.</p>
+      <ul>
+        <li>Set the Raycast hotkey to <kbd>Option</kbd><span class="plus">+</span><kbd>Space</kbd></li>
+        <li>Disable the default macOS Spotlight shortcut in System Settings &rarr; Keyboard &rarr; Keyboard Shortcuts &rarr; Spotlight</li>
+      </ul>
+    </SetupStep>
+
+    <SetupStep number={3} title="Install Rectangle">
+      <p>Download from <a href="https://rectangleapp.com/" target="_blank">rectangleapp.com</a> and install.</p>
+      <ul>
+        <li>Enable "Launch at login" in Rectangle preferences</li>
+      </ul>
+    </SetupStep>
+
+    <SetupStep number={4} title="Install daily apps">
+      <p>Install the following apps (used as launch targets in the Hyper key config):</p>
+      <ul>
+        <li><a href="https://ghostty.org/" target="_blank">Ghostty</a> &mdash; terminal</li>
+        <li><a href="https://www.mozilla.org/firefox/" target="_blank">Firefox</a> &mdash; browser</li>
+        <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> &mdash; editor</li>
+        <li><a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker Desktop</a></li>
+        <li><a href="https://desktop.github.com/" target="_blank">GitHub Desktop</a></li>
+        <li><a href="https://discord.com/" target="_blank">Discord</a></li>
+        <li><a href="https://slack.com/" target="_blank">Slack</a></li>
+        <li><a href="https://www.spotify.com/" target="_blank">Spotify</a></li>
+        <li><a href="https://www.granola.ai/" target="_blank">Granola</a></li>
+        <li><a href="https://linear.app/" target="_blank">Linear</a></li>
+        <li>Codex</li>
+        <li>Messages &amp; Finder (built-in)</li>
+      </ul>
+    </SetupStep>
+
+    <SetupStep number={5} title="Install Raycast extensions">
+      <p>Open Raycast and install these extensions from the store:</p>
+      <ul>
+        <li>Toothpick (Bluetooth manager)</li>
+        <li>Clipboard History</li>
+        <li>Emoji & Symbols</li>
+        <li>Confetti</li>
+        <li>Notes</li>
+      </ul>
+    </SetupStep>
+
+    <SetupStep number={6} title="Paste the Karabiner config">
+      <p>Copy the contents of <code>karabiner.json</code> from this repository and paste it into:</p>
+      <pre><code>~/.config/karabiner/karabiner.json</code></pre>
+      <p style="margin-top: 0.5rem;">You can do this via terminal:</p>
+      <pre><code>curl -fsSL https://raw.githubusercontent.com/arjunbakhale/karabiner/main/karabiner.json \
+  -o ~/.config/karabiner/karabiner.json</code></pre>
+      <p style="margin-top: 0.5rem;">Or clone the repo and symlink:</p>
+      <pre><code>git clone https://github.com/arjunbakhale/karabiner.git ~/.config/karabiner</code></pre>
+    </SetupStep>
+
+    <SetupStep number={7} title="Configure keyboard settings">
+      <p>In System Settings &rarr; Keyboard:</p>
+      <ul>
+        <li>Set <strong>Key Repeat Rate</strong> to <strong>Fast</strong></li>
+        <li>Set <strong>Delay Until Repeat</strong> to <strong>Short</strong></li>
+      </ul>
+    </SetupStep>
+
+    <SetupStep number={8} title="Verify everything works">
+      <p>Test the following keybinds to confirm setup is complete:</p>
+      <ul class="checklist">
+        <li>Tap <kbd>Left Command</kbd> &rarr; Raycast opens</li>
+        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>H/J/K/L</kbd> &rarr; arrow key navigation</li>
+        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>A</kbd> &rarr; Firefox opens</li>
+        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>F</kbd> &rarr; Ghostty opens</li>
+        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd> then <kbd>H</kbd> &rarr; window snaps left half</li>
+        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd> then <kbd>Enter</kbd> &rarr; window maximizes</li>
+        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>S</kbd> then <kbd>P</kbd> &rarr; play/pause media</li>
+        <li><kbd>Hyper</kbd><span class="plus">+</span><kbd>R</kbd> then <kbd>E</kbd> &rarr; emoji picker</li>
+      </ul>
+    </SetupStep>
+
+  </div>
+</BaseLayout>

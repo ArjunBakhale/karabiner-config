@@ -1,0 +1,307 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: #7f8fff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  flex: 1;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Card grid (keybinds) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Section card */
+.section {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #1a2744;
+}
+
+.section h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #7f8fff;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section h2 .badge {
+  font-size: 0.7rem;
+  background: #7f8fff22;
+  color: #7f8fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr { border-bottom: 1px solid #1a2744; }
+tr:last-child { border-bottom: none; }
+
+td {
+  padding: 0.45rem 0;
+  vertical-align: middle;
+}
+
+td:first-child {
+  width: 45%;
+  white-space: nowrap;
+}
+
+td:last-child {
+  color: #bbb;
+  font-size: 0.88rem;
+}
+
+/* Keyboard keys */
+kbd {
+  display: inline-block;
+  background: #0f3460;
+  border: 1px solid #1a4a80;
+  border-radius: 5px;
+  padding: 2px 7px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: #e0e0e0;
+  box-shadow: 0 1px 0 #0a2040;
+  line-height: 1.4;
+}
+
+.plus {
+  color: #555;
+  font-size: 0.75rem;
+  margin: 0 2px;
+}
+
+.separator {
+  color: #555;
+  margin: 0 4px;
+}
+
+.accent { color: #e94560; }
+.highlight { color: #53d8fb; }
+.green { color: #4ade80; }
+
+/* Code blocks */
+pre {
+  background: #0d1117;
+  border: 1px solid #1a2744;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #c9d1d9;
+}
+
+code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+}
+
+:not(pre) > code {
+  background: #0f3460;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+}
+
+/* Landing page cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #1a2744;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: #7f8fff;
+  text-decoration: none;
+}
+
+.card h3 {
+  color: #7f8fff;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Setup steps */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.step {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #1a2744;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.step-number {
+  background: #7f8fff;
+  color: #1a1a2e;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.step-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.step-body {
+  color: #bbb;
+  font-size: 0.92rem;
+  padding-left: 2.75rem;
+}
+
+.step-body ul {
+  margin: 0.5rem 0;
+  padding-left: 1.25rem;
+}
+
+.step-body li {
+  margin-bottom: 0.25rem;
+}
+
+/* Checklist */
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+
+.checklist li {
+  padding: 0.3rem 0;
+}
+
+.checklist li::before {
+  content: "\2610 ";
+  color: #7f8fff;
+  margin-right: 0.25rem;
+}
+
+/* Architecture diagrams */
+.diagram {
+  background: #0d1117;
+  border: 1px solid #1a2744;
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  line-height: 1.8;
+  overflow-x: auto;
+  color: #c9d1d9;
+  margin: 1rem 0;
+}
+
+/* Copy button */
+.copy-wrapper {
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #1a2744;
+  border: 1px solid #2a3a5c;
+  color: #7f8fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: inherit;
+}
+
+.copy-btn:hover {
+  background: #2a3a5c;
+}
+
+@media (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+  .container {
+    padding: 1rem;
+  }
+}

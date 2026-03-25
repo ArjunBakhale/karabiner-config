@@ -1,5 +1,5 @@
 {
-  "outputDirectory": ".",
-  "ignoreCommand": "exit 0",
-  "excludeFiles": ["karabiner.json", "automatic_backups/**", "assets/**", "SHORTCUTS_REFERENCE.md", ".SHORTCUTS_REFERENCE.md.swp"]
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install"
 }

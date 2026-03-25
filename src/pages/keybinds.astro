@@ -1,116 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Karabiner Keybind Reference</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-    background: #1a1a2e;
-    color: #e0e0e0;
-    padding: 2rem;
-    line-height: 1.5;
-  }
-  h1 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 0.5rem;
-  }
-  .subtitle {
-    text-align: center;
-    color: #888;
-    font-size: 0.9rem;
-    margin-bottom: 2.5rem;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-    gap: 1.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .section {
-    background: #16213e;
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    border: 1px solid #1a2744;
-  }
-  .section h2 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #7f8fff;
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .section h2 .badge {
-    font-size: 0.7rem;
-    background: #7f8fff22;
-    color: #7f8fff;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 500;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  tr { border-bottom: 1px solid #1a2744; }
-  tr:last-child { border-bottom: none; }
-  td {
-    padding: 0.45rem 0;
-    vertical-align: middle;
-  }
-  td:first-child {
-    width: 45%;
-    white-space: nowrap;
-  }
-  td:last-child {
-    color: #bbb;
-    font-size: 0.88rem;
-  }
-  kbd {
-    display: inline-block;
-    background: #0f3460;
-    border: 1px solid #1a4a80;
-    border-radius: 5px;
-    padding: 2px 7px;
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.8rem;
-    color: #e0e0e0;
-    box-shadow: 0 1px 0 #0a2040;
-    line-height: 1.4;
-  }
-  .plus {
-    color: #555;
-    font-size: 0.75rem;
-    margin: 0 2px;
-  }
-  .separator {
-    color: #555;
-    margin: 0 4px;
-  }
-  .accent { color: #e94560; }
-  .highlight { color: #53d8fb; }
-  .green { color: #4ade80; }
-</style>
-</head>
-<body>
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import KeybindTable from '../components/KeybindTable.astro';
+---
 
-<h1>Karabiner Keybinds</h1>
-<p class="subtitle">Hyper Key System &mdash; Left Command as Hyper</p>
+<BaseLayout title="Keybind Reference - Karabiner">
+  <h1>Karabiner Keybinds</h1>
+  <p class="subtitle">Hyper Key System &mdash; Left Command as Hyper</p>
 
-<div class="grid">
+  <div class="grid">
 
-  <!-- Key Remappings -->
-  <div class="section">
-    <h2>Key Remappings <span class="badge">Hardware</span></h2>
-    <table>
+    <KeybindTable title="Key Remappings" badge="Hardware">
       <tr>
         <td><kbd>Left Command</kbd> <small class="highlight">(hold)</small></td>
         <td>Hyper Key modifier</td>
@@ -131,13 +30,9 @@
         <td><kbd>Right Command</kbd></td>
         <td>Left Click</td>
       </tr>
-    </table>
-  </div>
+    </KeybindTable>
 
-  <!-- Backslash Remapping -->
-  <div class="section">
-    <h2>Backslash Remapping <span class="badge">\</span></h2>
-    <table>
+    <KeybindTable title="Backslash Remapping" badge={"\\"}>
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>\</kbd></td>
         <td>Backslash (passthrough)</td>
@@ -158,13 +53,9 @@
         <td><kbd>\</kbd> <small class="highlight">(alone)</small></td>
         <td>Forward Delete</td>
       </tr>
-    </table>
-  </div>
+    </KeybindTable>
 
-  <!-- Hyper Root -->
-  <div class="section">
-    <h2>Hyper Root <span class="badge">No sublayer</span></h2>
-    <table>
+    <KeybindTable title="Hyper Root" badge="No sublayer">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>E</kbd></td>
         <td>Escape</td>
@@ -193,13 +84,9 @@
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>Space</kbd></td>
         <td><span class="accent">Cmd+Shift+Space</span></td>
       </tr>
-    </table>
-  </div>
+    </KeybindTable>
 
-  <!-- Vim Navigation -->
-  <div class="section">
-    <h2>Vim Navigation <span class="badge">HJKL</span></h2>
-    <table>
+    <KeybindTable title="Vim Navigation" badge="HJKL">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>H</kbd></td>
         <td>Left Arrow</td>
@@ -216,13 +103,9 @@
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>L</kbd></td>
         <td>Right Arrow</td>
       </tr>
-    </table>
-  </div>
+    </KeybindTable>
 
-  <!-- App Launchers -->
-  <div class="section">
-    <h2>App Launchers <span class="badge">Hyper + Key</span></h2>
-    <table>
+    <KeybindTable title="App Launchers" badge="Hyper + Key">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>A</kbd></td>
         <td>Firefox</td>
@@ -279,13 +162,9 @@
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>'</kbd></td>
         <td>Linear</td>
       </tr>
-    </table>
-  </div>
+    </KeybindTable>
 
-  <!-- Display & Screenshots -->
-  <div class="section">
-    <h2>Display & Screenshots <span class="badge">Numbers</span></h2>
-    <table>
+    <KeybindTable title="Display & Screenshots" badge="Numbers">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>1</kbd></td>
         <td>Move to Previous Display</td>
@@ -302,13 +181,9 @@
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>4</kbd></td>
         <td>Screenshot Area <span class="accent">(Ctrl+Shift+Cmd+4)</span></td>
       </tr>
-    </table>
-  </div>
+    </KeybindTable>
 
-  <!-- Sublayer Activators -->
-  <div class="section">
-    <h2>Sublayer Activators <span class="badge">Hold</span></h2>
-    <table>
+    <KeybindTable title="Sublayer Activators" badge="Hold">
       <tr>
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>D</kbd> <small class="highlight">(hold)</small></td>
         <td>Enter Window Mode</td>
@@ -321,13 +196,9 @@
         <td><kbd>Hyper</kbd><span class="plus">+</span><kbd>R</kbd> <small class="highlight">(hold)</small></td>
         <td>Enter Raycast Mode</td>
       </tr>
-    </table>
-  </div>
+    </KeybindTable>
 
-  <!-- Window Mode -->
-  <div class="section">
-    <h2>Window Mode <span class="badge">Hyper + D + ...</span></h2>
-    <table>
+    <KeybindTable title="Window Mode" badge="Hyper + D + ...">
       <tr>
         <td><kbd>H</kbd></td>
         <td>Left Half</td>
@@ -368,13 +239,9 @@
         <td><kbd>M</kbd></td>
         <td>Center <span class="accent">(Ctrl+Opt+G)</span></td>
       </tr>
-    </table>
-  </div>
+    </KeybindTable>
 
-  <!-- System Mode -->
-  <div class="section">
-    <h2>System Mode <span class="badge">Hyper + S + ...</span></h2>
-    <table>
+    <KeybindTable title="System Mode" badge="Hyper + S + ...">
       <tr>
         <td><kbd>J</kbd></td>
         <td>Next Space <span class="accent">(Ctrl+Tab)</span></td>
@@ -403,13 +270,9 @@
         <td><kbd>F</kbd></td>
         <td>Forward <span class="accent">(Cmd+])</span></td>
       </tr>
-    </table>
-  </div>
+    </KeybindTable>
 
-  <!-- Raycast Mode -->
-  <div class="section">
-    <h2>Raycast Mode <span class="badge">Hyper + R + ...</span></h2>
-    <table>
+    <KeybindTable title="Raycast Mode" badge="Hyper + R + ...">
       <tr>
         <td><kbd>1</kbd></td>
         <td>Connect Bluetooth Device 1</td>
@@ -434,10 +297,12 @@
         <td><kbd>H</kbd></td>
         <td>Clipboard History</td>
       </tr>
-    </table>
+    </KeybindTable>
+
   </div>
+</BaseLayout>
 
-</div>
-
-</body>
-</html>
+<style>
+  h1 { text-align: center; }
+  .subtitle { text-align: center; }
+</style>

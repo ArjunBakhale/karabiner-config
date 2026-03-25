@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+  badge: string;
+}
+
+const { title, badge } = Astro.props;
+---
+
+<div class="section">
+  <h2>{title} <span class="badge">{badge}</span></h2>
+  <table>
+    <slot />
+  </table>
+</div>

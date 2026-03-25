@@ -1,0 +1,75 @@
+---
+const currentPath = Astro.url.pathname;
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/setup', label: 'Setup Guide' },
+  { href: '/keybinds', label: 'Keybinds' },
+  { href: '/architecture', label: 'Architecture' },
+];
+---
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Karabiner</a>
+    <div class="nav-links">
+      {links.map(link => (
+        <a
+          href={link.href}
+          class:list={['nav-link', { active: currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) }]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    background: #16213e;
+    border-bottom: 1px solid #1a2744;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+  }
+  .nav-link {
+    color: #888;
+    text-decoration: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-link:hover {
+    color: #e0e0e0;
+    background: #1a2744;
+    text-decoration: none;
+  }
+  .nav-link.active {
+    color: #7f8fff;
+    background: #7f8fff15;
+  }
+  @media (max-width: 500px) {
+    nav { padding: 0 1rem; }
+    .nav-link { padding: 0.4rem 0.5rem; font-size: 0.8rem; }
+  }
+</style>

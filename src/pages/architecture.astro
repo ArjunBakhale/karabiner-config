@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const exampleRule = `{
+  "description": "Hyper + T to open Terminal",
+  "manipulators": [{
+    "type": "basic",
+    "from": {
+      "key_code": "t",
+      "modifiers": {
+        "mandatory": ["command", "option", "control", "shift"]
+      }
+    },
+    "to": [{
+      "shell_command": "open -a 'Terminal.app'"
+    }]
+  }]
+}`;
+
+const conditionExample = `"conditions": [{
+  "type": "variable_if",
+  "name": "d_sublayer",
+  "value": 1
+}]`;
+---
+
+<BaseLayout title="Architecture - Karabiner">
+  <h1>How It Works</h1>
+  <p class="subtitle">Understanding the Hyper key system and sublayer architecture</p>
+
+  <div class="sections">
+
+    <div class="section">
+      <h2>The Hyper Key</h2>
+      <p>The core idea is remapping <kbd>Left Command</kbd> into a dual-purpose key:</p>
+      <ul>
+        <li><strong>Hold</strong> &rarr; acts as a Hyper modifier (Ctrl+Shift+Cmd+Opt internally) that doesn't conflict with any standard macOS shortcuts</li>
+        <li><strong>Tap</strong> &rarr; sends <kbd>Option</kbd><span class="plus">+</span><kbd>Space</kbd> to launch Raycast</li>
+      </ul>
+      <p style="margin-top: 0.75rem;">This gives you a dedicated modifier key that opens up the entire keyboard for custom bindings, without interfering with normal app shortcuts.</p>
+    </div>
+
+    <div class="section">
+      <h2>Variable-Based Sublayers</h2>
+      <p>Karabiner doesn't natively support "modes" or sublayers, so this config implements them using variables. When you hold a sublayer activator key, a variable is set to <code>1</code>. Other rules check that variable before firing.</p>
+      <div class="diagram">
+        <span style="color: #7f8fff;">Hyper</span> + <span style="color: #53d8fb;">D</span> (hold) &rarr; sets <span style="color: #4ade80;">d_sublayer = 1</span><br>
+        &nbsp;&nbsp;While <span style="color: #4ade80;">d_sublayer = 1</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #53d8fb;">H</span> &rarr; Left Half &nbsp;(Rectangle shortcut)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #53d8fb;">L</span> &rarr; Right Half (Rectangle shortcut)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #53d8fb;">F</span> &rarr; Maximize &nbsp;&nbsp;(Rectangle shortcut)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+        <span style="color: #7f8fff;">Hyper</span> + <span style="color: #53d8fb;">D</span> (release) &rarr; sets <span style="color: #e94560;">d_sublayer = 0</span>
+      </div>
+      <p>This pattern is used for three sublayers:</p>
+      <table>
+        <tr>
+          <td><kbd>D</kbd></td>
+          <td>Window management (Rectangle shortcuts)</td>
+        </tr>
+        <tr>
+          <td><kbd>S</kbd></td>
+          <td>System controls (spaces, media, navigation)</td>
+        </tr>
+        <tr>
+          <td><kbd>R</kbd></td>
+          <td>Raycast extensions (Bluetooth, emoji, clipboard)</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Layer Diagram</h2>
+      <div class="diagram">
+        <span style="color: #e94560;">Layer 0: Hardware Remaps</span><br>
+        &nbsp;&nbsp;Caps Lock &rarr; Command<br>
+        &nbsp;&nbsp;Right Option &rarr; Firefox<br>
+        &nbsp;&nbsp;Right Command &rarr; Left Click<br>
+        &nbsp;&nbsp;Backslash &rarr; Forward Delete (+ modifier variants)<br>
+        <br>
+        <span style="color: #7f8fff;">Layer 1: Hyper Root</span><br>
+        &nbsp;&nbsp;Left Command (hold) &rarr; Hyper modifier<br>
+        &nbsp;&nbsp;Hyper + H/J/K/L &rarr; Arrow keys<br>
+        &nbsp;&nbsp;Hyper + E &rarr; Escape<br>
+        &nbsp;&nbsp;Hyper + A/B/F/G/... &rarr; App launchers<br>
+        &nbsp;&nbsp;Hyper + X/Z/C &rarr; Modifier pass-throughs<br>
+        <br>
+        <span style="color: #4ade80;">Layer 2: Sublayers (variable-gated)</span><br>
+        &nbsp;&nbsp;Hyper + D + ... &rarr; Window mode<br>
+        &nbsp;&nbsp;Hyper + S + ... &rarr; System mode<br>
+        &nbsp;&nbsp;Hyper + R + ... &rarr; Raycast mode
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Key Remapping Philosophy</h2>
+      <ul>
+        <li><strong>Home row priority</strong> &mdash; the most-used actions live on H, J, K, L, D, S, F</li>
+        <li><strong>Mnemonic bindings</strong> &mdash; <kbd>A</kbd> for browser (address bar), <kbd>F</kbd> for terminal (Ghostty), <kbd>V</kbd> for VS Code, <kbd>G</kbd> for GitHub</li>
+        <li><strong>No modifier gymnastics</strong> &mdash; everything flows through Hyper (left thumb), keeping fingers on home row</li>
+        <li><strong>Sublayers for namespacing</strong> &mdash; D/S/R create clean groups so keys can be reused (e.g. <kbd>H</kbd> is Left Arrow at root, Left Half in window mode, Clipboard History in Raycast mode)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Adding New Bindings</h2>
+      <p>To add a new Hyper key binding, add a rule to the <code>rules</code> array in <code>karabiner.json</code>:</p>
+      <pre><code set:text={exampleRule} /></pre>
+      <p style="margin-top: 0.75rem;">To add a binding inside a sublayer (e.g. window mode), add a condition checking the sublayer variable:</p>
+      <pre><code set:text={conditionExample} /></pre>
+      <p style="margin-top: 0.75rem;">See the <a href="/keybinds">keybind reference</a> for the full list of current bindings.</p>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .sections .section p {
+    color: #bbb;
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  .sections .section ul {
+    color: #bbb;
+    font-size: 0.92rem;
+    margin: 0.5rem 0;
+    padding-left: 1.25rem;
+  }
+  .sections .section li {
+    margin-bottom: 0.35rem;
+    line-height: 1.7;
+  }
+</style>

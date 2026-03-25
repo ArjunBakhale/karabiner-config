@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Karabiner Hyper Key Setup">
+  <div class="hero">
+    <h1>Karabiner Hyper Key Setup</h1>
+    <p class="subtitle">A complete keyboard-driven workflow using Karabiner-Elements, Raycast, and Rectangle. Left Command becomes a Hyper key that unlocks vim-style navigation, app launching, window management, and more.</p>
+  </div>
+
+  <div class="card-grid">
+    <a href="/setup" class="card">
+      <h3>Setup Guide</h3>
+      <p>Step-by-step walkthrough to install and configure everything from scratch.</p>
+    </a>
+    <a href="/keybinds" class="card">
+      <h3>Keybind Reference</h3>
+      <p>Complete reference of all keybindings organized by category &mdash; navigation, apps, windows, and more.</p>
+    </a>
+    <a href="/architecture" class="card">
+      <h3>How It Works</h3>
+      <p>Understand the Hyper key concept, sublayer system, and how to extend the config.</p>
+    </a>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 3rem 0 1rem;
+  }
+  .hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+  }
+  .hero .subtitle {
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+</style>
