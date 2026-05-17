@@ -56,6 +56,8 @@
 | Hyper + Y | Spotify |
 | Hyper + ; | Raycast Notes |
 | Hyper + ' | Linear |
+| Hyper + , | Claude |
+| Hyper + 0 | Zoom |
 
 ### Display & Screenshots
 | Shortcut | Action |
@@ -64,6 +66,7 @@
 | Hyper + 2 | Next Display |
 | Hyper + 3 | Screenshot |
 | Hyper + 4 | Screenshot Area |
+| Hyper + 5 | Screen Recording |
 | Hyper + 5 | Screen Recording |
 
 ## Sublayer Activators
