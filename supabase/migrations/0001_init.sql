@@ -629,8 +629,8 @@ create policy irb_submissions_write on public.irb_submissions for all to authent
 create policy audit_events_read on public.audit_events for select to authenticated using (tenant_id = public.current_tenant_id());
 create policy signature_records_read on public.signature_records for select to authenticated using (tenant_id = public.current_tenant_id());
 
-revoke all on table public.upload_tokens from anon, authenticated;
 grant select, insert, update, delete on all tables in schema public to authenticated;
+revoke all on table public.upload_tokens from anon, authenticated;
 revoke update on public.findings from authenticated;
 grant update (disposition, disposition_changed_by, disposition_changed_at) on public.findings to authenticated;
 revoke insert, update, delete on public.finding_evidence from authenticated;
