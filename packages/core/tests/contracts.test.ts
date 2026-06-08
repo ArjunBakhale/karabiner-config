@@ -45,15 +45,16 @@ describe("contracts", () => {
       tenant_id: "00000000-0000-4000-8000-000000000001",
       site_id: "00000000-0000-4000-8000-000000000012",
       requirement_instance_id: null,
+      type: "PI_NAME_MISMATCH",
       severity: "warning",
-      code: "PI_NAME_MISMATCH",
-      message: "Asserted PI name differs from evidence.",
-      asserted_state: { piName: "Dr. A" },
-      evidence_summary: { piName: "Dr. B" },
+      confidence: 0.93,
+      detail: "Asserted PI name differs from evidence.",
+      source: "system",
       disposition: "open",
       disposition_changed_by: null,
       disposition_changed_at: null,
-      created_at: "2026-01-01T00:00:00.000Z"
+      created_at: "2026-01-01T00:00:00.000Z",
+      updated_at: "2026-01-01T00:00:00.000Z"
     });
 
     expect(finding.disposition).toBe("open");

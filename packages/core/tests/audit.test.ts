@@ -7,6 +7,7 @@ describe("audit writer", () => {
       tenantId: "tenant-1",
       seq: 1,
       prevHash: null,
+      actor: "system",
       action: "created",
       entityType: "site",
       payload: { b: 2, a: 1 }
@@ -15,6 +16,7 @@ describe("audit writer", () => {
       tenantId: "tenant-1",
       seq: 1,
       prevHash: null,
+      actor: "system",
       action: "created",
       entityType: "site",
       payload: { a: 1, b: 2 }
@@ -48,7 +50,7 @@ describe("audit writer", () => {
                 seq: 1,
                 prev_hash: null,
                 hash: "a".repeat(64),
-                actor_user_id: null,
+                actor: "system",
                 action: "created",
                 entity_type: "site",
                 entity_id: null,
@@ -65,6 +67,7 @@ describe("audit writer", () => {
 
     const inserted = await appendAuditEvent(client, {
       tenantId: "tenant-1",
+      actor: "system",
       action: "created",
       entityType: "site"
     });

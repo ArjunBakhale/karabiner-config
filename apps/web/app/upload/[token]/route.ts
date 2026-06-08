@@ -48,6 +48,7 @@ export async function POST(request: Request, context: { params: Promise<{ token:
     .from("upload_tokens")
     .select("*")
     .eq("token_hash", tokenHash)
+    .eq("revoked", false)
     .gt("expires_at", new Date().toISOString())
     .is("used_at", null)
     .maybeSingle();

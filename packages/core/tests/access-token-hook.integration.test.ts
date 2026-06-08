@@ -18,14 +18,14 @@ run("custom access token hook", () => {
 
     expect(auth.error).toBeNull();
 
-    const { data, error } = await client.from("studies").select("tenant_id, protocol_number");
+    const { data, error } = await client.from("studies").select("tenant_id, name");
 
     expect(error).toBeNull();
     expect(data).toEqual(
       expect.arrayContaining([
         {
           tenant_id: "00000000-0000-4000-8000-000000000001",
-          protocol_number: "GL-101"
+          name: "A Phase 2 Study of GL-101 in Solid Tumors"
         }
       ])
     );

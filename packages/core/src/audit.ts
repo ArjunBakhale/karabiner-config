@@ -16,7 +16,7 @@ export type AuditPgPool = {
 
 export type AppendAuditEventInput = {
   tenantId: string;
-  actorUserId?: string | null;
+  actor: string;
   action: string;
   entityType: string;
   entityId?: string | null;
@@ -29,7 +29,7 @@ export type AuditEventRow = {
   seq: number;
   prev_hash: string | null;
   hash: string;
-  actor_user_id: string | null;
+  actor: string;
   action: string;
   entity_type: string;
   entity_id: string | null;
@@ -59,7 +59,7 @@ export function computeAuditHash(input: {
   tenantId: string;
   seq: number;
   prevHash: string | null;
-  actorUserId?: string | null;
+  actor: string;
   action: string;
   entityType: string;
   entityId?: string | null;
@@ -71,7 +71,7 @@ export function computeAuditHash(input: {
         tenantId: input.tenantId,
         seq: input.seq,
         prevHash: input.prevHash,
-        actorUserId: input.actorUserId ?? null,
+        actor: input.actor,
         action: input.action,
         entityType: input.entityType,
         entityId: input.entityId ?? null,
@@ -115,19 +115,19 @@ export async function appendAuditEvent(
       const seq = previous ? Number(previous.seq) + 1 : 1;
       const prevHash = previous?.hash ?? null;
       const hash = computeAuditHash({
-        tenantId: input.tenantId,
-        seq,
-        prevHash,
-        actorUserId: input.actorUserId,
-        action: input.action,
-        entityType: input.entityType,
-        entityId: input.entityId,
+          tenantId: input.tenantId,
+          seq,
+          prevHash,
+          actor: input.actor,
+          action: input.action,
+          entityType: input.entityType,
+          entityId: input.entityId,
         payload: input.payload
       });
 
       const inserted = await client.query<AuditEventRow>(
         `insert into public.audit_events
-          (tenant_id, seq, prev_hash, hash, actor_user_id, action, entity_type, entity_id, payload)
+          (tenant_id, seq, prev_hash, hash, actor, action, entity_type, entity_id, payload)
          values ($1, $2, $3, $4, $5, $6, $7, $8, $9::jsonb)
          returning *`,
         [
@@ -135,7 +135,7 @@ export async function appendAuditEvent(
           seq,
           prevHash,
           hash,
-          input.actorUserId ?? null,
+          input.actor,
           input.action,
           input.entityType,
           input.entityId ?? null,
