@@ -1,6 +1,9 @@
 node_modules/
 dist/
 .astro/
+.next/
+.turbo/
+*.tsbuildinfo
 .DS_Store
 automatic_backups/
 .vercel

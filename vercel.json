@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "installCommand": "npm install"
+  "buildCommand": "pnpm --filter @greenlight/web build",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "framework": "nextjs"
 }
