@@ -44,16 +44,15 @@
 | Hyper + B | Docker |
 | Hyper + F | Ghostty |
 | Hyper + G | Codex |
-| Hyper + I | Granola |
-| Hyper + M | Messages |
+| Hyper + I | Superset |
 | Hyper + N | Option+M |
 | Hyper + O | ChatGPT |
 | Hyper + P | Discord |
 | Hyper + Q | Slack |
+| Hyper + T | Granola |
 | Hyper + U | Conductor |
 | Hyper + V | VS Code |
 | Hyper + W | Finder |
-| Hyper + Y | Spotify |
 | Hyper + ; | Raycast Notes |
 | Hyper + ' | Linear |
 | Hyper + , | Claude |
